@@ -4,32 +4,32 @@
    ========================================================================== */
 
 :root {
-  /* Physical Canvas & Paper Swatches */
-  --color-paper-bg: #FAF7F2;        /* Warm Ivory Desk Canvas Background */
-  --color-paper-sheet: #FDFBF7;     /* Crisp Warm White Paper Sheet */
-  --color-paper-cream: #F5EFE3;     /* Slightly Aged Cream Paper */
-  --color-paper-sand: #EFE8D6;      /* Sand Beige Paper Layer */
-  --color-paper-kraft: #E2D5C1;     /* Kraft Paper / Cardboard Stub */
-  --color-paper-dark: #D8CBBA;      /* Vintage Paper Border/Accent */
+  /* Physical Canvas & Paper Swatches — Dusty White / Granite & Misty Gray Palette */
+  --color-paper-bg: #FDFCF3;        /* Dusty White Desk Canvas Background */
+  --color-paper-sheet: #FFFCF0;     /* Crisp Dusty White Paper Sheet */
+  --color-paper-cream: #F1F0E7;     /* Slightly Toned Paper */
+  --color-paper-sand: #E3E2D8;      /* Neutral Sand-Gray Paper Layer */
+  --color-paper-kraft: #D2D1C6;     /* Kraft Paper / Cardboard Stub */
+  --color-paper-dark: #C1C0B5;      /* Vintage Paper Border/Accent */
 
   /* Dark Ink Swatches */
-  --color-ink: #221F1D;             /* Deep Vintage Charcoal Ink (Headings/Body) */
-  --color-ink-muted: #5C564E;       /* Muted Charcoal Text */
-  --color-ink-light: #8E867B;       /* Light Caption & Perforations */
+  --color-ink: #2C2D27;             /* Granite Gray Ink (Headings/Body) */
+  --color-ink-muted: #646661;       /* Misty Gray Text */
+  --color-ink-light: #9A9C96;       /* Light Caption & Perforations */
 
   /* Sophisticated Editorial Accents */
-  --color-forest: #1B4D3E;          /* Deep Forest Green */
-  --color-forest-dark: #12372B;
-  --color-forest-soft: #E8F2ED;
+  --color-forest: #2C2D27;          /* Granite Gray (replaces Forest Green) */
+  --color-forest-dark: #1D1E1A;
+  --color-forest-soft: #ECECE6;
 
-  --color-terracotta: #C85A32;      /* Terracotta Red */
-  --color-terracotta-hover: #B24B25;
-  --color-terracotta-soft: #FCF1EC;
+  --color-terracotta: #FFD63D;      /* Alarming Yellow (replaces Terracotta) */
+  --color-terracotta-hover: #E6B800;
+  --color-terracotta-soft: #FFF6D6;
 
-  --color-ocean-blue: #2B5C75;      /* Muted Ocean Blue */
-  --color-ocean-soft: #EBF3F7;
+  --color-ocean-blue: #646661;      /* Misty Gray (replaces Ocean Blue) */
+  --color-ocean-soft: #ECECE6;
 
-  --color-gold-stamp: #A27B36;      /* Vintage Brass Stamp */
+  --color-gold-stamp: #B38F00;      /* Deep Yellow Stamp */
 
   /* Mapped Semantic Tokens */
   --color-primary: var(--color-forest);
@@ -47,12 +47,12 @@
   --color-text-muted: var(--color-ink-muted);
   --color-text-light: var(--color-ink-light);
 
-  --color-border: rgba(195, 180, 160, 0.45);
-  --color-border-strong: rgba(165, 148, 125, 0.7);
+  --color-border: rgba(100, 102, 97, 0.28);
+  --color-border-strong: rgba(44, 45, 39, 0.4);
 
-  /* Typography System — Cabinet Grotesk (Primary Sans, Headings & Body) + Cormorant Garamond (Elegant Italic Accent) */
-  --font-display: 'Cabinet Grotesk', system-ui, -apple-system, sans-serif;    /* Cabinet Grotesk Bold Headings */
-  --font-sans: 'Cabinet Grotesk', system-ui, -apple-system, sans-serif;       /* Cabinet Grotesk Clean Sans Body */
+  /* Typography System — League Spartan (Display, Headings) + Manrope (Sans, Body & UI) + Cormorant Garamond (Elegant Italic Accent) */
+  --font-display: 'League Spartan', system-ui, -apple-system, sans-serif;    /* League Spartan Bold Headings */
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;              /* Manrope Clean Sans Body */
   --font-handwriting: 'Cormorant Garamond', Georgia, serif;                  /* Cormorant Garamond Italic Accent Notes */
   --font-typewriter: var(--font-sans);                  /* Clean Sans for UI Badges & Buttons */
 
@@ -72,6 +72,13 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-card: 20px;
+  --radius-card-lg: 24px;
+
+  /* Readable Text Measures — constrain paragraph/column widths independent of section width */
+  --measure-sm: 420px;
+  --measure-md: 640px;
+  --measure-lg: 768px;
 }
 
 /* Reset & Base Setup */
@@ -86,10 +93,21 @@ html {
   font-size: 16px;
 }
 
+/* Lenis smooth-scroll: let Lenis own the easing instead of native smooth-scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--color-paper-bg);
-  background-image: radial-gradient(rgba(175, 160, 140, 0.15) 1px, transparent 0);
+  background-image: radial-gradient(rgba(100, 102, 97, 0.14) 1px, transparent 0);
   background-size: 24px 24px;
   color: var(--color-ink);
   line-height: 1.6;
@@ -145,7 +163,7 @@ button {
 input, select, textarea {
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  background-color: #FAF7F2;
+  background-color: var(--color-paper-bg);
   color: var(--color-ink);
   border: 1px solid var(--color-border);
   border-radius: 6px;
@@ -154,8 +172,8 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: var(--color-terracotta);
-  box-shadow: 0 0 0 3px rgba(200, 90, 50, 0.12);
+  border-color: var(--color-terracotta-hover);
+  box-shadow: 0 0 0 3px rgba(230, 184, 0, 0.22);
 }
 
 /* Container */
@@ -190,7 +208,7 @@ input:focus, select:focus, textarea:focus {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: linear-gradient(135deg, rgba(27, 77, 62, 0.08) 0%, rgba(200, 90, 50, 0.06) 100%);
+  background: linear-gradient(135deg, rgba(44, 45, 39, 0.07) 0%, rgba(230, 184, 0, 0.08) 100%);
   color: var(--color-forest);
   font-family: var(--font-sans);
   font-size: 0.775rem;
@@ -200,8 +218,8 @@ input:focus, select:focus, textarea:focus {
   padding: 0.4rem 1.15rem;
   border-radius: 30px;
   margin-bottom: 0.85rem;
-  border: 1px solid rgba(27, 77, 62, 0.2);
-  box-shadow: 0 2px 8px rgba(27, 77, 62, 0.05);
+  border: 1px solid rgba(44, 45, 39, 0.18);
+  box-shadow: 0 2px 8px rgba(44, 45, 39, 0.05);
   transition: all 0.25s ease;
 }
 
@@ -212,7 +230,7 @@ input:focus, select:focus, textarea:focus {
   height: 6px;
   border-radius: 50%;
   background-color: var(--color-terracotta);
-  box-shadow: 0 0 6px rgba(200, 90, 50, 0.5);
+  box-shadow: 0 0 6px rgba(230, 184, 0, 0.5);
 }
 
 
@@ -248,16 +266,16 @@ input:focus, select:focus, textarea:focus {
   justify-content: center;
   height: 42px;
   padding: 0 20px;
-  background-color: #C9572E;
-  color: #FFFFFF;
+  background-color: #FFD63D;
+  color: #2C2D27;
   font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  border-radius: 6px;
+  border-radius: 50px;
   border: none;
-  box-shadow: 0 4px 14px rgba(201, 87, 46, 0.32);
+  box-shadow: 0 4px 14px rgba(230, 184, 0, 0.35);
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
@@ -277,9 +295,9 @@ input:focus, select:focus, textarea:focus {
 }
 
 .pearl-button:hover {
-  background-color: #B34923;
+  background-color: #E6B800;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(201, 87, 46, 0.42);
+  box-shadow: 0 6px 18px rgba(230, 184, 0, 0.45);
 }
 
 .pearl-button:hover .pearl-button-arrow {
@@ -288,11 +306,11 @@ input:focus, select:focus, textarea:focus {
 
 .pearl-button:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(201, 87, 46, 0.25);
+  box-shadow: 0 2px 6px rgba(230, 184, 0, 0.3);
 }
 
 .pearl-button:focus-visible {
-  outline: 2px solid #C9572E;
+  outline: 2px solid #2C2D27;
   outline-offset: 2px;
 }
 
@@ -348,28 +366,28 @@ input:focus, select:focus, textarea:focus {
 
 .btn-primary {
   background-color: var(--color-terracotta);
-  color: #FFFFFF;
+  color: var(--color-ink);
   border: 1px solid var(--color-terracotta-hover);
-  box-shadow: 0 4px 14px rgba(200, 90, 50, 0.28);
+  box-shadow: 0 4px 14px rgba(230, 184, 0, 0.3);
 }
 
 .btn-primary:hover {
   background-color: var(--color-terracotta-hover);
   transform: translateY(-2px);
-  box-shadow: 0 7px 20px rgba(200, 90, 50, 0.38);
+  box-shadow: 0 7px 20px rgba(230, 184, 0, 0.4);
 }
 
 .btn-secondary {
   background-color: var(--color-forest);
   color: #FFFFFF;
   border: 1px solid var(--color-forest-dark);
-  box-shadow: 0 4px 14px rgba(27, 77, 62, 0.25);
+  box-shadow: 0 4px 14px rgba(44, 45, 39, 0.28);
 }
 
 .btn-secondary:hover {
   background-color: var(--color-forest-dark);
   transform: translateY(-2px);
-  box-shadow: 0 7px 20px rgba(27, 77, 62, 0.35);
+  box-shadow: 0 7px 20px rgba(44, 45, 39, 0.38);
 }
 
 .btn-outline {
@@ -386,15 +404,15 @@ input:focus, select:focus, textarea:focus {
 }
 
 .btn-whatsapp {
-  background-color: #1E6B4B;
+  background-color: var(--color-gold-stamp);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(30, 107, 75, 0.3);
+  box-shadow: 0 4px 14px rgba(179, 143, 0, 0.3);
 }
 
 .btn-whatsapp:hover {
-  background-color: #16533A;
+  background-color: #8F7300;
   transform: translateY(-2px);
-  box-shadow: 0 7px 18px rgba(30, 107, 75, 0.4);
+  box-shadow: 0 7px 18px rgba(179, 143, 0, 0.4);
 }
 
 .btn-sm {
@@ -447,6 +465,7 @@ input:focus, select:focus, textarea:focus {
 .card {
   background-color: var(--color-paper-sheet);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-card-lg);
   box-shadow: var(--shadow-paper);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   position: relative;
@@ -457,38 +476,43 @@ input:focus, select:focus, textarea:focus {
   box-shadow: var(--shadow-photo);
 }
 
+/* Readable Measure Utilities — cap paragraph line-length independent of parent width */
+.measure-sm { max-width: var(--measure-sm); margin-left: auto; margin-right: auto; }
+.measure-md { max-width: var(--measure-md); margin-left: auto; margin-right: auto; }
+.measure-lg { max-width: var(--measure-lg); margin-left: auto; margin-right: auto; }
+
 /* Torn Edge SVG Clip-Paths & Masking Helpers */
 .torn-edge-top {
   clip-path: polygon(
-    0% 0.8rem, 3% 0.2rem, 7% 0.9rem, 11% 0.1rem, 16% 0.8rem, 21% 0.2rem, 
-    27% 0.9rem, 33% 0.1rem, 39% 0.7rem, 44% 0.2rem, 50% 0.9rem, 56% 0.1rem, 
-    62% 0.8rem, 68% 0.3rem, 74% 0.9rem, 80% 0.2rem, 86% 0.8rem, 92% 0.1rem, 
+    0% 0.8rem, 3% 0.2rem, 7% 0.9rem, 11% 0.1rem, 16% 0.8rem, 21% 0.2rem,
+    27% 0.9rem, 33% 0.1rem, 39% 0.7rem, 44% 0.2rem, 50% 0.9rem, 56% 0.1rem,
+    62% 0.8rem, 68% 0.3rem, 74% 0.9rem, 80% 0.2rem, 86% 0.8rem, 92% 0.1rem,
     97% 0.7rem, 100% 0.2rem, 100% 100%, 0% 100%
   );
 }
 
 .torn-edge-bottom {
   clip-path: polygon(
-    0% 0%, 100% 0%, 100% calc(100% - 0.8rem), 
-    97% calc(100% - 0.2rem), 92% calc(100% - 0.9rem), 86% calc(100% - 0.1rem), 
-    80% calc(100% - 0.8rem), 74% calc(100% - 0.3rem), 68% calc(100% - 0.9rem), 
-    62% calc(100% - 0.2rem), 56% calc(100% - 0.8rem), 50% calc(100% - 0.1rem), 
-    44% calc(100% - 0.7rem), 39% calc(100% - 0.2rem), 33% calc(100% - 0.9rem), 
-    27% calc(100% - 0.1rem), 21% calc(100% - 0.8rem), 16% calc(100% - 0.2rem), 
+    0% 0%, 100% 0%, 100% calc(100% - 0.8rem),
+    97% calc(100% - 0.2rem), 92% calc(100% - 0.9rem), 86% calc(100% - 0.1rem),
+    80% calc(100% - 0.8rem), 74% calc(100% - 0.3rem), 68% calc(100% - 0.9rem),
+    62% calc(100% - 0.2rem), 56% calc(100% - 0.8rem), 50% calc(100% - 0.1rem),
+    44% calc(100% - 0.7rem), 39% calc(100% - 0.2rem), 33% calc(100% - 0.9rem),
+    27% calc(100% - 0.1rem), 21% calc(100% - 0.8rem), 16% calc(100% - 0.2rem),
     11% calc(100% - 0.9rem), 7% calc(100% - 0.1rem), 3% calc(100% - 0.8rem), 0% calc(100% - 0.3rem)
   );
 }
 
 .torn-edge-both {
   clip-path: polygon(
-    0% 0.7rem, 4% 0.1rem, 9% 0.8rem, 14% 0.2rem, 20% 0.9rem, 26% 0.1rem, 
-    32% 0.8rem, 38% 0.2rem, 45% 0.9rem, 52% 0.1rem, 59% 0.8rem, 66% 0.2rem, 
-    73% 0.9rem, 81% 0.1rem, 89% 0.8rem, 95% 0.2rem, 100% 0.7rem, 
-    100% calc(100% - 0.7rem), 95% calc(100% - 0.1rem), 89% calc(100% - 0.8rem), 
-    81% calc(100% - 0.2rem), 73% calc(100% - 0.9rem), 66% calc(100% - 0.1rem), 
-    59% calc(100% - 0.8rem), 52% calc(100% - 0.2rem), 45% calc(100% - 0.9rem), 
-    38% calc(100% - 0.1rem), 32% calc(100% - 0.8rem), 26% calc(100% - 0.2rem), 
-    20% calc(100% - 0.9rem), 14% calc(100% - 0.1rem), 9% calc(100% - 0.8rem), 
+    0% 0.7rem, 4% 0.1rem, 9% 0.8rem, 14% 0.2rem, 20% 0.9rem, 26% 0.1rem,
+    32% 0.8rem, 38% 0.2rem, 45% 0.9rem, 52% 0.1rem, 59% 0.8rem, 66% 0.2rem,
+    73% 0.9rem, 81% 0.1rem, 89% 0.8rem, 95% 0.2rem, 100% 0.7rem,
+    100% calc(100% - 0.7rem), 95% calc(100% - 0.1rem), 89% calc(100% - 0.8rem),
+    81% calc(100% - 0.2rem), 73% calc(100% - 0.9rem), 66% calc(100% - 0.1rem),
+    59% calc(100% - 0.8rem), 52% calc(100% - 0.2rem), 45% calc(100% - 0.9rem),
+    38% calc(100% - 0.1rem), 32% calc(100% - 0.8rem), 26% calc(100% - 0.2rem),
+    20% calc(100% - 0.9rem), 14% calc(100% - 0.1rem), 9% calc(100% - 0.8rem),
     4% calc(100% - 0.2rem), 0% calc(100% - 0.7rem)
   );
 }
@@ -529,12 +553,12 @@ input:focus, select:focus, textarea:focus {
   background: var(--color-paper-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #D5CBB9;
+  background: #C4C3B8;
   border-radius: 4px;
   border: 2px solid var(--color-paper-bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B5A893;
+  background: #9A9C96;
 }
 
 /* Animations */
@@ -573,10 +597,10 @@ input:focus, select:focus, textarea:focus {
 
 .paper-nav-btn:hover {
   background-color: var(--color-terracotta) !important;
-  color: #ffffff !important;
+  color: var(--color-ink) !important;
   border-color: var(--color-terracotta) !important;
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(200, 90, 50, 0.35);
+  box-shadow: 0 6px 16px rgba(230, 184, 0, 0.4);
 }
 
 .paper-nav-btn:active {
@@ -613,6 +637,5 @@ html {
     transition: none !important;
   }
 }
-
 
 

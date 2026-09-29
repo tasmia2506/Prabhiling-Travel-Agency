@@ -8,7 +8,7 @@ export const TOUR_PACKAGES = [
     startingPrice: 5999,
     featured: true,
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=800&q=80",
+    image: "/dest-mysore.jpg",
     badge: "Most Popular",
     highlights: [
       "AC Sleeper/Seater Bus Transportation",
@@ -32,7 +32,7 @@ export const TOUR_PACKAGES = [
     startingPrice: 8499,
     featured: true,
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80",
+    image: "/dest-gokarna.jpg",
     badge: "Best Seller",
     highlights: [
       "Luxury Volvo Sleeper Transportation",
@@ -57,7 +57,7 @@ export const TOUR_PACKAGES = [
     startingPrice: 4299,
     featured: true,
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+    image: "/dest-coorg.jpg",
     badge: "Weekend Special",
     highlights: [
       "Direct Deluxe Coach Transportation",
@@ -79,7 +79,7 @@ export const TOUR_PACKAGES = [
     duration: "3 Days / 2 Nights",
     startingPrice: 6799,
     rating: 5.0,
-    image: "https://images.unsplash.com/photo-1572445271230-a78b5944a659?auto=format&fit=crop&w=800&q=80",
+    image: "/dest-udupi.jpg",
     badge: "Family Favorite",
     highlights: [
       "Special Darshan Ticket Assistance",

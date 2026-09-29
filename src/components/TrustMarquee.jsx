@@ -2,14 +2,13 @@ import React from 'react';
 import { Bus, ShieldCheck, Users, Clock, BadgeCheck, MapPin, MessageCircle, Star } from 'lucide-react';
 
 const TRUST_ITEMS = [
-  { icon: Bus, label: '7+ Luxury Buses' },
-  { icon: ShieldCheck, label: '10+ Years of Trust' },
-  { icon: Users, label: '5,000+ Happy Travelers' },
-  { icon: Clock, label: '24/7 Human Support' },
-  { icon: BadgeCheck, label: '100% Transparent Pricing' },
-  { icon: MapPin, label: 'South India Coverage' },
-  { icon: MessageCircle, label: 'WhatsApp Booking Desk' },
-  { icon: Star, label: '4.9/5 Rated Service' },
+  { icon: Bus, label: '8+ LUXURY BUSES', desc: 'Modern, well-maintained fleet' },
+  { icon: BadgeCheck, label: 'TRANSPARENT PRICING', desc: 'Zero hidden fees & honest billing' },
+  { icon: Clock, label: '24/7 HUMAN SUPPORT', desc: 'Instant booking via call & WhatsApp' },
+  { icon: ShieldCheck, label: '10+ YEARS OF TRUST', desc: 'Verified drivers, safe journeys' },
+  { icon: Users, label: '5,000+ HAPPY TRAVELERS', desc: 'Word-of-mouth referral base' },
+  { icon: MapPin, label: 'SOUTH INDIA COVERAGE', desc: 'Routes across Karnataka & beyond' },
+  { icon: Star, label: '4.9/5 RATED SERVICE', desc: 'Consistently high traveler ratings' },
 ];
 
 function MarqueeTrack() {
@@ -17,8 +16,9 @@ function MarqueeTrack() {
     <div className="trust-marquee-track">
       {TRUST_ITEMS.map((item, idx) => (
         <span className="trust-marquee-item" key={idx}>
-          <item.icon size={16} style={{ color: 'var(--color-terracotta)', flexShrink: 0 }} />
-          {item.label}
+          <item.icon size={16} style={{ color: 'var(--color-ink)', flexShrink: 0 }} />
+          <span className="trust-marquee-label">{item.label}</span>
+          <span className="trust-marquee-desc">&ndash; {item.desc}</span>
           <span className="trust-marquee-dot" />
         </span>
       ))}
@@ -30,10 +30,11 @@ export default function TrustMarquee() {
   return (
     <section
       style={{
-        backgroundColor: 'var(--color-ink)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        backgroundColor: 'var(--color-terracotta)',
+        borderBottom: '1px solid rgba(44, 45, 39, 0.12)',
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        marginTop: '0.85rem'
       }}
       aria-label="Why travelers trust Prabhuling Travels"
     >
@@ -63,20 +64,27 @@ export default function TrustMarquee() {
         .trust-marquee-item {
           display: inline-flex;
           align-items: center;
-          gap: 0.55rem;
+          gap: 0.5rem;
           font-family: var(--font-sans);
-          font-size: 0.85rem;
-          font-weight: 600;
-          letter-spacing: 0.02em;
-          color: rgba(255, 255, 255, 0.88);
           white-space: nowrap;
-          padding: 0.95rem 1.75rem;
+          padding: 1rem 2.1rem;
+        }
+        .trust-marquee-label {
+          font-size: 0.8rem;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          color: var(--color-ink);
+        }
+        .trust-marquee-desc {
+          font-size: 0.8rem;
+          font-weight: 400;
+          color: rgba(44, 45, 39, 0.65);
         }
         .trust-marquee-dot {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.25);
+          background-color: rgba(44, 45, 39, 0.3);
           margin-left: 1.75rem;
         }
         .trust-marquee-fade {
@@ -89,11 +97,11 @@ export default function TrustMarquee() {
         }
         .trust-marquee-fade-left {
           left: 0;
-          background: linear-gradient(90deg, var(--color-ink) 0%, transparent 100%);
+          background: linear-gradient(90deg, var(--color-terracotta) 0%, transparent 100%);
         }
         .trust-marquee-fade-right {
           right: 0;
-          background: linear-gradient(270deg, var(--color-ink) 0%, transparent 100%);
+          background: linear-gradient(270deg, var(--color-terracotta) 0%, transparent 100%);
         }
         @keyframes trust-marquee-scroll {
           from { transform: translateX(0); }

@@ -1,46 +1,48 @@
-// Fleet Data — Exactly 7 Buses operated by Prabhuling Travel Agency
+// Fleet Data — Exactly 8 Buses operated by Prabhuling Travel Agency
 export const FLEET_BUSES = [
   {
     id: "bus-1",
     busNumber: "KA-01-F-7001",
     name: "Prabhuling Royal Sleeper",
-    category: "AC Multi-Axle Luxury Sleeper (2+1)",
+    category: "Non-AC Leyland Sleeper (2+1)",
     capacity: 30,
-    type: "Sleeper AC",
+    type: "Sleeper Non-AC",
+    specLine: "2+1, Leyland Sleeper, Non-AC, Non-Video (30 Seats)",
     rating: 4.9,
     reviewsCount: 142,
     startingPrice: 850,
     featured: true,
     primaryRoute: "Bengaluru ↔ Goa (via Hubballi / Dharwad)",
     schedule: "Daily Departure: 8:45 PM | Arrival: 7:30 AM",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
-    amenities: ["AC", "Personal Reading Lights", "Charging Ports", "Clean Blankets & Pillows", "GPS Tracking", "Emergency Hammer & Extinguisher", "Water Bottle"],
+    image: "/bus-royal-sleeper.jpg",
+    amenities: [],
     seatLayout: {
-      type: "2+1 Sleeper",
+      type: "2+1 Sleeper, Non-Video",
       totalSeats: 30,
       upperDeck: 15,
       lowerDeck: 15
     },
-    description: "Our flagship long-distance AC sleeper coach designed for ultra-smooth overnight interstate travel with premium suspension."
+    description: "Our flagship long-distance Leyland Non-AC sleeper coach designed for smooth overnight interstate travel with premium suspension."
   },
   {
     id: "bus-2",
     busNumber: "KA-01-F-7002",
     name: "Prabhuling Express Seater",
-    category: "AC Executive Push-Back Coach (2+2)",
-    capacity: 44,
-    type: "Seater AC",
+    category: "Non-AC Sleeper Coach (2+1)",
+    capacity: 34,
+    type: "Sleeper Non-AC",
+    specLine: "Sleeper Non A/C (2+1) 34 Seats",
     rating: 4.8,
     reviewsCount: 118,
     startingPrice: 450,
     featured: true,
     primaryRoute: "Bengaluru ↔ Mysuru Express Way",
     schedule: "3 Trips Daily: 6:00 AM, 11:30 AM, 5:00 PM",
-    image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80",
+    image: "/bus-sleeper-coach-8.jpg",
     amenities: ["AC", "Reclining Seats", "Mobile Charging", "Music & Entertainment", "Leg Rests", "Luggage Storage"],
     seatLayout: {
-      type: "2+2 Executive Seater",
-      totalSeats: 44
+      type: "2+1 Non-AC Sleeper",
+      totalSeats: 34
     },
     description: "High-frequency day service coach connecting Bengaluru & Mysuru with high comfort & punctual schedules."
   },
@@ -48,19 +50,20 @@ export const FLEET_BUSES = [
     id: "bus-3",
     busNumber: "KA-01-F-7003",
     name: "Prabhuling Star Sleeper",
-    category: "Non-AC Premium Sleeper (2+1)",
-    capacity: 32,
+    category: "Non-AC Sleeper Super Bus",
+    capacity: 36,
     type: "Sleeper Non-AC",
+    specLine: "NON A/C SLEEPER SUPER BUS 36 Seats",
     rating: 4.7,
     reviewsCount: 96,
     startingPrice: 650,
     primaryRoute: "Bengaluru ↔ Mangaluru (via Hassan / Sakleshpur)",
     schedule: "Daily Departure: 9:30 PM | Arrival: 6:15 AM",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
+    image: "/bus-star-sleeper.jpg",
     amenities: ["Spacious Berths", "Charging Ports", "Curtains for Privacy", "Fresh Bedding", "First Aid Kit", "Emergency Exit"],
     seatLayout: {
-      type: "2+1 Non-AC Sleeper",
-      totalSeats: 32
+      type: "Non-AC Sleeper Super Bus",
+      totalSeats: 36
     },
     description: "Budget-friendly, highly ventilated overnight sleeper servicing coastal routes with experienced western ghat drivers."
   },
@@ -144,6 +147,27 @@ export const FLEET_BUSES = [
       totalSeats: 35
     },
     description: "Exclusively reserved for tour packages, corporate outings, wedding transport, & pilgrimage group charters."
+  },
+  {
+    id: "bus-8",
+    busNumber: "KA-01-F-7008",
+    name: "Prabhuling Sleepov Coach",
+    category: "Non-AC Sleeper (2+1)",
+    capacity: 34,
+    type: "Sleeper Non-AC",
+    specLine: "Sleeper Non A/C (2+1) 34 Seats",
+    rating: 4.7,
+    reviewsCount: 58,
+    startingPrice: 800,
+    primaryRoute: "Bengaluru ↔ Long Distance Interstate Routes",
+    schedule: "Daily Departure: 9:00 PM | Arrival: Next Morning",
+    image: "/bus-sleeper-coach-8.jpg",
+    amenities: [],
+    seatLayout: {
+      type: "2+1 Non-AC Sleeper",
+      totalSeats: 34
+    },
+    description: "Dependable non-AC sleeper coach built for long overnight interstate hauls with comfortable berths."
   }
 ];
 

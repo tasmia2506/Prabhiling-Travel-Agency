@@ -19,6 +19,31 @@ export default function CtaSection({ onOpenBookingModal }) {
         overflow: 'hidden'
       }}
     >
+      {/* Background Photo */}
+      <img
+        src="/karnataka-map-hero-wide.jpg"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.4
+        }}
+      />
+
+      {/* Dark Overlay for Text Legibility */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(18, 15, 12, 0.45) 0%, rgba(18, 15, 12, 0.6) 100%)',
+          pointerEvents: 'none'
+        }}
+      />
+
       {/* Subtle Radial Glow Accent */}
       <div
         style={{
@@ -28,7 +53,7 @@ export default function CtaSection({ onOpenBookingModal }) {
           transform: 'translateX(-50%)',
           width: '900px',
           height: '500px',
-          background: 'radial-gradient(circle, rgba(200, 90, 50, 0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(230, 184, 0, 0.18) 0%, transparent 70%)',
           pointerEvents: 'none'
         }}
       />

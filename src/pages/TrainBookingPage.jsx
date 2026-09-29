@@ -4,6 +4,7 @@ import PaperCard from '../components/scrapbook/PaperCard';
 import TicketCard from '../components/scrapbook/TicketCard';
 import TravelStamp from '../components/scrapbook/TravelStamp';
 import MapFragment from '../components/scrapbook/MapFragment';
+import HeroCard from '../components/HeroCard';
 
 export default function TrainBookingPage({ config, onOpenBookingModal }) {
   const [formData, setFormData] = useState({
@@ -50,61 +51,25 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
       <MapFragment opacity={0.06} />
 
       {/* Hero Banner with Video Background & Centered Content */}
-      <section
-        style={{
-          position: 'relative',
-          overflow: 'hidden',
-          padding: '5.5rem 0 5rem 0',
-          borderBottom: '1px solid var(--color-border)',
-          backgroundColor: '#0F1612',
-          color: '#FFFFFF'
-        }}
+      <HeroCard
+        video="/train2.mp4"
+        overlayGradient="linear-gradient(180deg, rgba(15, 22, 18, 0.45) 0%, rgba(15, 22, 18, 0.25) 50%, rgba(15, 22, 18, 0.60) 100%)"
+        minHeight="640px"
+        pullUnderHeader={false}
+        rounded={0}
       >
-        {/* Background Video (High Clarity 100% Sharpness) */}
-        <video
-          src="/train2.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0,
-            opacity: 0.95
-          }}
-        />
-
-        {/* Lightweight Subtle Overlay (Zero Blur for HD Clarity) */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(180deg, rgba(15, 22, 18, 0.45) 0%, rgba(15, 22, 18, 0.25) 50%, rgba(15, 22, 18, 0.60) 100%)',
-            zIndex: 1
-          }}
-        />
-
-        {/* Centered Content */}
-        <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
+        <div style={{ padding: '1rem 0', textAlign: 'center' }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
             <span
               style={{
                 display: 'inline-block',
-                padding: '0.4rem 1.15rem',
-                backgroundColor: 'rgba(255, 255, 255, 0.15)',
                 color: '#FDFBF7',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-                borderRadius: '30px',
                 fontFamily: 'var(--font-typewriter)',
                 fontSize: '0.75rem',
+                fontWeight: 700,
                 letterSpacing: '0.12em',
                 marginBottom: '1rem',
-                backdropFilter: 'blur(6px)'
+                textShadow: '0 2px 8px rgba(0,0,0,0.5)'
               }}
             >
               PAN-INDIA RAILWAY TICKET ASSISTANCE
@@ -125,7 +90,7 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
               All-India Train Ticket Reservation Desk
             </h1>
 
-            <p style={{ fontFamily: 'var(--font-handwriting)', fontStyle: 'italic', fontSize: '1.5rem', color: 'var(--color-terracotta)', marginBottom: '1.1rem' }}>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1.3rem', color: '#FFFFFF', marginBottom: '1.1rem' }}>
               Every berth, booked with heart.
             </p>
 
@@ -154,19 +119,19 @@ export default function TrainBookingPage({ config, onOpenBookingModal }) {
                 color: '#FDFBF7'
               }}
             >
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0,0,0,0.4)', padding: '0.45rem 1rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
                 <CheckCircle2 size={18} style={{ color: '#4ADE80' }} /> All Zones Covered
               </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0,0,0,0.4)', padding: '0.45rem 1rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
                 <Zap size={18} style={{ color: '#FACC15' }} /> Tatkal Assistance
               </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0,0,0,0.4)', padding: '0.45rem 1rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', }}>
                 <Train size={18} style={{ color: '#38BDF8' }} /> Lower Berth Preference
               </span>
             </div>
           </div>
         </div>
-      </section>
+      </HeroCard>
 
       {/* Main Container */}
       <div className="container" style={{ marginTop: '3rem' }}>

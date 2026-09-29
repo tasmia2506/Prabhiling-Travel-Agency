@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { PACKAGES } from '../data/packagesData';
 import PaperCard from '../components/scrapbook/PaperCard';
-import TravelStamp from '../components/scrapbook/TravelStamp';
 import MapFragment from '../components/scrapbook/MapFragment';
-import { Palmtree, Mountain, Bus } from 'lucide-react';
+import HeroCard from '../components/HeroCard';
+import { Palmtree, Mountain, Bus, MapPin, Clock, ArrowRight } from 'lucide-react';
 
 export default function ToursPage({ onOpenBookingModal }) {
   const [filterDest, setFilterDest] = useState('All');
@@ -20,132 +19,97 @@ export default function ToursPage({ onOpenBookingModal }) {
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
       <MapFragment opacity={0.06} />
 
-      {/* Hero Banner with HD Background Image & Right-Aligned Content */}
-      <section
-        style={{
-          position: 'relative',
-          overflow: 'hidden',
-          padding: '5.5rem 0 5rem 0',
-          borderBottom: '1px solid var(--color-border)',
-          backgroundColor: '#0F1612',
-          color: '#FFFFFF'
-        }}
+      {/* Hero Banner with HD Background Image & Left-Aligned Content */}
+      <HeroCard
+        image="/karnataka-map-hero-wide.jpg"
+        imageAlt="Illustrated Karnataka Map — Signature Tour Packages"
+        aspectRatio="1584 / 672"
+        overlayGradient="linear-gradient(90deg, rgba(15, 22, 18, 0.75) 0%, rgba(15, 22, 18, 0.5) 40%, rgba(15, 22, 18, 0.1) 75%)"
+        imageStyle={{ filter: 'contrast(1.06) brightness(1.05)' }}
+        contentStyle={{ maxWidth: 'none', margin: 0, padding: `0 1.25rem 0 clamp(2rem, 8vw, 6rem)` }}
+        rounded={0}
       >
-        {/* Background Image (Full Bleed, 100% Crystal Clear & Bright) */}
-        <img
-          src="/tours-destinations.jfif"
-          alt="Tours and Destinations Background"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center 40%',
-            zIndex: 0,
-            opacity: 1,
-            filter: 'contrast(1.06) brightness(1.05)'
-          }}
-        />
-
-        {/* Soft Feathered Right Overlay for Text Readability & Maximum Image Visibility */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(270deg, rgba(15, 22, 18, 0.72) 0%, rgba(15, 22, 18, 0.35) 45%, rgba(15, 22, 18, 0.02) 100%)',
-            zIndex: 1
-          }}
-        />
-
-        {/* Right-Aligned Hero Content */}
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div
-            style={{
-              maxWidth: '820px',
-              marginLeft: 'auto',
-              marginRight: 0,
-              textAlign: 'right',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-end'
-            }}
-          >
+        <div style={{ padding: '1rem 0' }}>
+          <div style={{ maxWidth: '620px' }}>
             <span
               style={{
                 display: 'inline-block',
-                padding: '0.4rem 1.15rem',
-                backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                color: '#FDFBF7',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-                borderRadius: '30px',
+                color: 'var(--color-terracotta)',
                 fontFamily: 'var(--font-typewriter)',
                 fontSize: '0.75rem',
-                letterSpacing: '0.12em',
+                fontWeight: 700,
+                letterSpacing: '0.14em',
                 marginBottom: '1rem',
-                backdropFilter: 'blur(6px)'
+                textShadow: '0 2px 8px rgba(0,0,0,0.5)'
               }}
             >
-              HANDCRAFTED ITINERARIES • GROUP & FAMILY HOLIDAYS
+              HANDCRAFTED ITINERARIES &nbsp;•&nbsp; GROUP & FAMILY HOLIDAYS
             </span>
 
             <h1
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.5rem, 5.5vw, 4.2rem)',
+                fontSize: 'clamp(2.75rem, 6vw, 4.4rem)',
                 fontWeight: '800',
                 color: '#FFFFFF',
-                marginTop: '0.5rem',
-                marginBottom: '1rem',
-                lineHeight: '1.1',
+                marginBottom: '1.1rem',
+                lineHeight: '1.08',
                 textShadow: '0 4px 20px rgba(0,0,0,0.5)'
               }}
             >
-              Signature Tours & Destinations
+              Signature Tour Packages
             </h1>
 
-            <p style={{ fontFamily: 'var(--font-handwriting)', fontStyle: 'italic', fontSize: '1.5rem', color: '#F2A87A', marginBottom: '1.1rem' }}>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1.3rem', color: '#FFFFFF', marginBottom: '1.1rem' }}>
               Handcrafted escapes, curated with care.
             </p>
 
             <p
               style={{
-                fontSize: '1.15rem',
-                color: 'rgba(253, 251, 247, 0.92)',
+                fontSize: '1rem',
+                color: 'rgba(253, 251, 247, 0.85)',
                 lineHeight: '1.7',
-                marginBottom: '1.75rem',
-                maxWidth: '720px',
+                marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.5)'
               }}
             >
               All-inclusive holiday packages featuring luxury Prabhuling bus transfers, hotel stays, guided sightseeing, & dedicated human agency escorts across South India's top landscapes.
             </p>
 
-            <div
-              style={{
-                display: 'flex',
-                gap: '1rem',
-                justifyContent: 'flex-end',
-                flexWrap: 'wrap',
-                fontSize: '0.9rem',
-                fontWeight: '600',
-                color: '#FDFBF7'
-              }}
-            >
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0,0,0,0.4)', padding: '0.45rem 1rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.2)' }}>
-                <Palmtree size={18} style={{ color: '#38BDF8' }} /> Heritage & Coastal Tours
-              </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0,0,0,0.4)', padding: '0.45rem 1rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.2)' }}>
-                <Mountain size={18} style={{ color: '#4ADE80' }} /> Coffee Hill Stations
-              </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0,0,0,0.4)', padding: '0.45rem 1rem', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.2)' }}>
-                <Bus size={18} style={{ color: '#C9572E' }} /> Luxury Fleet Sightseeing
-              </span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem 0' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingRight: '1.25rem' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid rgba(255, 255, 255, 0.4)', color: 'var(--color-terracotta)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Palmtree size={18} />
+                </div>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '0.9rem', color: '#FFFFFF', fontWeight: '700', whiteSpace: 'nowrap' }}>Heritage & Coastal</strong>
+                  <span style={{ display: 'block', fontSize: '0.775rem', color: 'rgba(255, 255, 255, 0.7)' }}>Tours</span>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0 1.25rem', borderLeft: '1px solid rgba(255, 255, 255, 0.25)' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid rgba(255, 255, 255, 0.4)', color: 'var(--color-terracotta)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Mountain size={18} />
+                </div>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '0.9rem', color: '#FFFFFF', fontWeight: '700', whiteSpace: 'nowrap' }}>Coffee Hill</strong>
+                  <span style={{ display: 'block', fontSize: '0.775rem', color: 'rgba(255, 255, 255, 0.7)' }}>Stations</span>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingLeft: '1.25rem', borderLeft: '1px solid rgba(255, 255, 255, 0.25)' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid rgba(255, 255, 255, 0.4)', color: 'var(--color-terracotta)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Bus size={18} />
+                </div>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '0.9rem', color: '#FFFFFF', fontWeight: '700', whiteSpace: 'nowrap' }}>Luxury Fleet</strong>
+                  <span style={{ display: 'block', fontSize: '0.775rem', color: 'rgba(255, 255, 255, 0.7)' }}>Sightseeing</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </HeroCard>
 
       {/* Tour Folders Catalog */}
       <div className="container" style={{ marginTop: '3rem' }}>
@@ -159,27 +123,6 @@ export default function ToursPage({ onOpenBookingModal }) {
               Select any tour dossier to request custom dates or group fare breakdowns.
             </p>
           </div>
-
-          <div style={{ display: 'inline-flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {['All', 'Heritage', 'Beach', 'Hills'].map((type) => (
-              <button
-                key={type}
-                onClick={() => setFilterDest(type)}
-                style={{
-                  fontFamily: 'var(--font-typewriter)',
-                  fontSize: '0.775rem',
-                  padding: '0.45rem 1rem',
-                  borderRadius: '3px',
-                  border: filterDest === type ? '1px solid var(--color-terracotta)' : '1px solid var(--color-border)',
-                  backgroundColor: filterDest === type ? 'var(--color-terracotta)' : 'var(--color-paper-sheet)',
-                  color: filterDest === type ? '#FFFFFF' : 'var(--color-ink)',
-                  cursor: 'pointer'
-                }}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Tour Grid */}
@@ -192,49 +135,98 @@ export default function ToursPage({ onOpenBookingModal }) {
                 padding="0"
                 style={{ borderRadius: '18px' }}
               >
-                <div style={{ position: 'relative', height: '210px', overflow: 'hidden' }}>
+                <div style={{ position: 'relative', height: '230px', overflow: 'hidden' }}>
                   <img src={pkg.image} alt={pkg.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <div className="tag-dark" style={{ position: 'absolute', top: '12px', left: '12px' }}>
+
+                  {pkg.badge && (
+                    <span
+                      style={{
+                        position: 'absolute',
+                        top: '12px',
+                        left: '12px',
+                        backgroundColor: 'rgba(20, 20, 18, 0.85)',
+                        color: '#FFFFFF',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.7rem',
+                        fontWeight: '700',
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                        padding: '0.4rem 0.85rem',
+                        borderRadius: '30px'
+                      }}
+                    >
+                      {pkg.badge}
+                    </span>
+                  )}
+
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      right: '12px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                      color: 'var(--color-ink)',
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.75rem',
+                      fontWeight: '600',
+                      padding: '0.4rem 0.75rem',
+                      borderRadius: '30px'
+                    }}
+                  >
+                    <Clock size={13} />
                     {pkg.duration}
-                  </div>
-                  <div style={{ position: 'absolute', bottom: '12px', right: '12px' }}>
-                    <TravelStamp text="APPROVED TOUR" size="small" color="#FFFFFF" rotation="-6deg" />
-                  </div>
+                  </span>
                 </div>
 
-                <div style={{ padding: '1.35rem 1.25rem 1.25rem 1.25rem' }}>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: '700', color: 'var(--color-ink)', marginBottom: '0.2rem' }}>
+                <div style={{ padding: '1.5rem' }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: '700', color: 'var(--color-ink)', marginBottom: '0.4rem' }}>
                     {pkg.title}
                   </h3>
-                  <p style={{ fontFamily: 'var(--font-handwriting)', fontStyle: 'italic', fontSize: '1.15rem', color: 'var(--color-terracotta)', marginBottom: '0.85rem' }}>
-                    "{pkg.destination}"
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.75rem' }}>
+                    <MapPin size={14} style={{ color: 'var(--color-ink-light)', flexShrink: 0 }} />
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: 'var(--color-ink-muted)' }}>
+                      {pkg.destination}
+                    </span>
+                  </div>
+
+                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9rem', color: 'var(--color-ink-muted)', lineHeight: '1.6' }}>
+                    {pkg.description}
                   </p>
 
-                  <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '0.85rem', marginTop: '0.5rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.9rem' }}>
-                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.625rem', color: 'var(--color-ink-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                  <div style={{ paddingTop: '1rem', marginTop: '1.1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
+                    <div>
+                      <span style={{ display: 'block', fontFamily: 'var(--font-sans)', fontSize: '0.7rem', color: 'var(--color-ink-light)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                         Starting from
                       </span>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: '800', color: 'var(--color-forest)' }}>
+                      <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: '800', color: 'var(--color-ink)' }}>
                         ₹{pkg.startingPrice ? pkg.startingPrice.toLocaleString() : '4,999'}
-                      </div>
+                      </span>
                     </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
-                      <Link
-                        to={`/tours/${pkg.id}`}
-                        style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--color-terracotta)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}
-                      >
-                        View Details →
-                      </Link>
-
-                      <button
-                        onClick={() => onOpenBookingModal({ service: 'Tour Package', tourName: pkg.title })}
-                        className="btn btn-primary btn-sm"
-                      >
-                        Enquire
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => onOpenBookingModal({ service: 'Tour Package', tourName: pkg.title })}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        backgroundColor: 'var(--color-terracotta)',
+                        color: '#2C2D27',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.825rem',
+                        fontWeight: '700',
+                        border: 'none',
+                        borderRadius: '30px',
+                        padding: '0.65rem 1.25rem',
+                        cursor: 'pointer',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      Get a Quote <ArrowRight size={15} />
+                    </button>
                   </div>
                 </div>
               </PaperCard>

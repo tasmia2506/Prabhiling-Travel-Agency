@@ -1,63 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowDown, MapPin } from 'lucide-react';
+import HeroCard from './HeroCard';
 
 export default function Hero() {
   return (
-    <section
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '92vh',
-        minHeight: '620px',
-        maxHeight: '1000px',
-        marginTop: '-72px', // Pull background up behind transparent header
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        backgroundColor: '#121914'
-      }}
+    <HeroCard
+      video="/landing page.mp4"
+      overlay
+      overlayGradient="linear-gradient(180deg, rgba(18, 25, 20, 0.45) 0%, rgba(18, 25, 20, 0.25) 45%, rgba(18, 25, 20, 0.85) 100%)"
+      minHeight="620px"
+      wave={false}
+      rounded={0}
+      style={{ height: '100vh' }}
     >
-      {/* 1. Cinematic Background Image */}
-      <img
-        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=85"
-        alt="Traveler overlooking misty Western Ghats mountains in Karnataka"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center 35%',
-          filter: 'brightness(0.9) contrast(1.05)'
-        }}
-        loading="eager"
-      />
-
-      {/* 2. Subtle Soft Gradient Overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(180deg, rgba(18, 25, 20, 0.45) 0%, rgba(18, 25, 20, 0.25) 45%, rgba(18, 25, 20, 0.85) 100%)',
-          pointerEvents: 'none'
-        }}
-      />
-
       {/* 3. Minimal Coordinates / Location Tag (Top Right) */}
       <div
         style={{
           position: 'absolute',
-          top: '100px',
+          top: '28px',
           right: '5%',
           zIndex: 10,
           color: 'rgba(255, 255, 255, 0.85)',
           fontFamily: 'var(--font-typewriter)',
           fontSize: '0.725rem',
           letterSpacing: '0.15em',
-          display: 'none',
-          mdDisplay: 'block'
         }}
         className="hero-location-tag"
       >
@@ -66,7 +33,6 @@ export default function Hero() {
 
       {/* 4. Left-Aligned Hero Copy & Actions */}
       <div
-        className="container"
         style={{
           position: 'relative',
           zIndex: 10,
@@ -149,18 +115,18 @@ export default function Hero() {
         {/* Primary CTA & Secondary Action */}
         <div style={{ display: 'flex', gap: '1.1rem', justifyContent: 'flex-start', alignItems: 'center', flexWrap: 'wrap' }}>
           <Link
-            to="/tours"
+            to="/packages"
             className="btn"
             style={{
               backgroundColor: 'var(--color-terracotta)',
-              color: '#FFFFFF',
+              color: '#2C2D27',
               padding: '1rem 2.2rem',
               fontSize: '0.95rem',
               fontWeight: '700',
               letterSpacing: '0.03em',
               borderRadius: '50px',
               border: '1px solid rgba(255,255,255,0.2)',
-              boxShadow: '0 6px 20px rgba(200, 90, 50, 0.35)',
+              boxShadow: '0 6px 20px rgba(230, 184, 0, 0.35)',
               textDecoration: 'none'
             }}
           >
@@ -192,40 +158,17 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 5. Scroll Indicator at Bottom */}
-      <a
-        href="#destinations-intro"
-        style={{
-          position: 'absolute',
-          bottom: '25px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 10,
-          color: 'rgba(255, 255, 255, 0.75)',
-          fontFamily: 'var(--font-typewriter)',
-          fontSize: '0.675rem',
-          letterSpacing: '0.18em',
-          textDecoration: 'none',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '0.3rem'
-        }}
-      >
-        <span>SCROLL TO EXPLORE</span>
-        <ArrowDown size={14} style={{ animation: 'bounce 2s infinite' }} />
-      </a>
-
       <style>{`
         @keyframes bounce {
           0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
           40% { transform: translateY(-5px); }
           60% { transform: translateY(-3px); }
         }
+        .hero-location-tag { display: none; }
         @media (min-width: 768px) {
           .hero-location-tag { display: block !important; }
         }
       `}</style>
-    </section>
+    </HeroCard>
   );
 }

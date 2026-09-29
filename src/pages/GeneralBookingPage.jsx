@@ -30,6 +30,24 @@ export default function GeneralBookingPage({ config }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const whatsappNum = (config?.whatsappNumber || '918050172818').replace(/[^0-9]/g, '');
+    const serviceLabel = servicesList.find((s) => s.id === selectedService)?.label || selectedService;
+
+    let messageText = `*PRABHULING TRAVEL AGENCY — BOOKING MANIFESTO*\n`;
+    messageText += `--------------------------------------\n`;
+    messageText += `👤 *FULL NAME*: ${formData.name}\n`;
+    messageText += `📞 *MOBILE*: ${formData.phone}\n`;
+    messageText += `🧭 *SERVICE REQUIRED*: ${serviceLabel}\n`;
+    if (formData.fromCity) messageText += `📍 *FROM CITY*: ${formData.fromCity}\n`;
+    if (formData.toCity) messageText += `📍 *TO DESTINATION*: ${formData.toCity}\n`;
+    messageText += `📅 *TRAVEL DATE*: ${formData.travelDate}\n`;
+    messageText += `👥 *PASSENGERS*: ${formData.passengers}\n`;
+    if (formData.message) messageText += `💬 *NOTES*: ${formData.message}\n`;
+    messageText += `--------------------------------------\n`;
+    messageText += `*Sent via Booking Manifesto Form*`;
+
+    const waUrl = `https://wa.me/${whatsappNum}?text=${encodeURIComponent(messageText)}`;
+    window.open(waUrl, '_blank');
     setIsSubmitted(true);
   };
 
@@ -73,7 +91,7 @@ export default function GeneralBookingPage({ config }) {
       <div className="container" style={{ marginTop: '3rem', maxWidth: '840px' }}>
         <TicketCard
           ticketType="general"
-          accentColor="var(--color-forest)"
+          accentColor="var(--color-gold-stamp)"
           ticketNumber="PRB-MANIFEST-8050"
           badgeText="GENERAL TRAVEL MANIFESTO & RESERVATION PASS"
           notchBgColor="var(--color-paper-bg)"
@@ -101,8 +119,8 @@ export default function GeneralBookingPage({ config }) {
                       padding: '0.85rem 0.5rem',
                       borderRadius: '4px',
                       border: isSelected ? '1.5px solid var(--color-terracotta)' : '1px solid var(--color-border)',
-                      backgroundColor: isSelected ? 'var(--color-terracotta-soft)' : 'var(--color-paper-cream)',
-                      color: isSelected ? 'var(--color-terracotta)' : 'var(--color-ink)',
+                      backgroundColor: isSelected ? 'var(--color-terracotta)' : 'var(--color-paper-cream)',
+                      color: 'var(--color-ink)',
                       fontWeight: '700',
                       fontSize: '0.825rem',
                       cursor: 'pointer'
@@ -117,13 +135,13 @@ export default function GeneralBookingPage({ config }) {
           </div>
 
           {isSubmitted ? (
-            <div style={{ backgroundColor: 'var(--color-paper-cream)', padding: '2rem', borderRadius: '4px', border: '1px solid var(--color-forest)', textAlign: 'center' }}>
-              <CheckCircle2 size={46} style={{ color: 'var(--color-forest)', margin: '0 auto 0.75rem auto' }} />
+            <div style={{ backgroundColor: 'var(--color-paper-cream)', padding: '2rem', borderRadius: '4px', border: '1px solid var(--color-gold-stamp)', textAlign: 'center' }}>
+              <CheckCircle2 size={46} style={{ color: 'var(--color-gold-stamp)', margin: '0 auto 0.75rem auto' }} />
               <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--color-ink)', fontSize: '1.5rem', marginBottom: '0.35rem' }}>
-                Travel Reservation Submitted!
+                Reservation Sent to WhatsApp!
               </h3>
               <p style={{ fontSize: '1rem', color: 'var(--color-ink-muted)', marginBottom: '1.5rem' }}>
-                Thank you, <strong>{formData.name}</strong>. Our booking desk will contact you on <strong>{formData.phone}</strong> for <strong>{selectedService}</strong> arrangements.
+                Thank you, <strong>{formData.name}</strong>. WhatsApp has opened with your structured booking details. Our desk will contact you on <strong>{formData.phone}</strong>.
               </p>
             </div>
           ) : (

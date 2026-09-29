@@ -16,7 +16,7 @@ export default function TourDetailPage({ config, onOpenBookingModal }) {
       {/* Header Banner */}
       <section style={{ backgroundColor: 'var(--color-paper-sheet)', borderBottom: '1px solid var(--color-border)', padding: '3.5rem 0 3rem 0', position: 'relative' }}>
         <div className="container">
-          <Link to="/tours" style={{ color: 'var(--color-terracotta)', fontWeight: '700', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '1rem', display: 'inline-block' }}>
+          <Link to="/packages" style={{ color: 'var(--color-terracotta)', fontWeight: '700', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '1rem', display: 'inline-block' }}>
             ← Back to All Tour Packages
           </Link>
 

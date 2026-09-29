@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 import { FLEET } from '../data/fleetData';
 import PaperCard from '../components/scrapbook/PaperCard';
 import TravelStamp from '../components/scrapbook/TravelStamp';
@@ -11,6 +12,11 @@ export default function BusDetailPage({ config, onOpenBookingModal }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title={`${bus.name} — ${bus.type}`}
+        description={`${bus.name} (${bus.type}), ${bus.capacity} seats. ${bus.tagline || 'Directly owned & maintained coach'} — book your seat pass with Prabhuling Travel Agency.`}
+        path={`/buses/${bus.id}`}
+      />
       <MapFragment opacity={0.06} />
 
       {/* Header Banner */}
@@ -44,7 +50,7 @@ export default function BusDetailPage({ config, onOpenBookingModal }) {
               </p>
             </div>
 
-            <TravelStamp text="7-BUS FLEET" size="medium" color="var(--color-terracotta)" rotation="-6deg" />
+            <TravelStamp text="8-BUS FLEET" size="medium" color="var(--color-gold-stamp)" rotation="-6deg" />
           </div>
         </div>
       </section>

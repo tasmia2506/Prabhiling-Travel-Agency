@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DESTINATIONS } from '../data/destinationsData';
-import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, MapPin, ArrowRight, Clock } from 'lucide-react';
 
 export default function Destinations() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -60,39 +60,6 @@ export default function Destinations() {
           <p className="section-desc">
             Hand-curated travel destinations across Karnataka & South India's finest sanctuaries.
           </p>
-
-          {/* Filter Tabs */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '0.65rem',
-              flexWrap: 'wrap',
-              marginTop: '1.75rem'
-            }}
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                style={{
-                  fontFamily: 'var(--font-typewriter)',
-                  fontSize: '0.775rem',
-                  padding: '0.45rem 1.1rem',
-                  borderRadius: '4px',
-                  border: activeCategory === cat ? '1px solid var(--color-terracotta)' : '1px solid var(--color-border)',
-                  backgroundColor: activeCategory === cat ? 'var(--color-terracotta)' : '#FDFBF7',
-                  color: activeCategory === cat ? '#FFFFFF' : 'var(--color-ink)',
-                  cursor: 'pointer',
-                  fontWeight: '700',
-                  transition: 'all 0.25s ease',
-                  boxShadow: activeCategory === cat ? '0 3px 10px rgba(200, 90, 50, 0.25)' : 'none'
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Editorial Card Grid */}
@@ -104,175 +71,136 @@ export default function Destinations() {
           }}
         >
           {filteredDestinations.map((dest) => {
-            const photoList = (dest.gallery && dest.gallery.length > 0) ? dest.gallery : [dest.image || fallbackImage];
             return (
               <div
                 key={dest.id}
-                style={{
-                  backgroundColor: '#FDFBF7',
-                  borderRadius: '18px',
-                  border: '1px solid rgba(195, 180, 160, 0.5)',
-                  boxShadow: 'var(--shadow-paper)',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease'
-                }}
                 className="card"
+                onClick={() => openGallery(dest, 0)}
+                style={{
+                  position: 'relative',
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  aspectRatio: '4 / 5',
+                  cursor: 'pointer',
+                  boxShadow: 'var(--shadow-paper)'
+                }}
+                title="Click to view destination photo gallery"
               >
-                <div>
-                  {/* Image Container with Zoom & Click to View Photo Gallery */}
-                  <div 
-                    onClick={() => openGallery(dest, 0)}
-                    style={{ position: 'relative', height: '220px', overflow: 'hidden', backgroundColor: 'var(--color-paper-cream)', cursor: 'pointer' }}
-                    title="Click to view destination photo gallery"
-                  >
-                    <img
-                      src={dest.image || fallbackImage}
-                      alt={dest.name}
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = fallbackImage;
-                      }}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block',
-                        transition: 'transform 0.5s ease'
-                      }}
-                      loading="lazy"
-                    />
+                <img
+                  src={dest.image || fallbackImage}
+                  alt={dest.name}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = fallbackImage;
+                  }}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  loading="lazy"
+                />
 
-                    {/* Duration Badge */}
-                    <div className="tag-dark" style={{ position: 'absolute', top: '12px', left: '12px' }}>
-                      {dest.duration || '2-4 Days'}
-                    </div>
+                {/* Bottom Gradient for Text Legibility */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(180deg, transparent 0%, transparent 32%, rgba(10, 10, 8, 0.7) 62%, rgba(10, 10, 8, 0.92) 100%)'
+                  }}
+                />
 
-                    {/* Category Pill Tag */}
+                {/* Content Overlay */}
+                <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1.5rem' }}>
+                  {/* Badges Row */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
                     {dest.category && (
-                      <div className="tag-light" style={{ position: 'absolute', top: '12px', right: '12px' }}>
+                      <span
+                        style={{
+                          backgroundColor: 'rgba(20, 20, 18, 0.85)',
+                          color: '#FFFFFF',
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '0.7rem',
+                          fontWeight: '700',
+                          letterSpacing: '0.04em',
+                          textTransform: 'uppercase',
+                          padding: '0.4rem 0.85rem',
+                          borderRadius: '30px'
+                        }}
+                      >
                         {dest.category}
-                      </div>
+                      </span>
                     )}
 
-                    {/* Photo Gallery Badge Overlay */}
-                    <div
+                    <span
                       style={{
-                        position: 'absolute',
-                        bottom: '12px',
-                        left: '12px',
-                        backgroundColor: 'rgba(15, 22, 18, 0.75)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.3rem',
+                        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
                         color: '#FFFFFF',
                         fontFamily: 'var(--font-sans)',
-                        fontSize: '0.7rem',
+                        fontSize: '0.75rem',
                         fontWeight: '600',
-                        padding: '0.3rem 0.65rem',
-                        borderRadius: '20px',
+                        padding: '0.4rem 0.75rem',
+                        borderRadius: '30px'
+                      }}
+                    >
+                      <MapPin size={13} />
+                      {dest.distanceFromBase ? `${dest.distanceFromBase} from Hubli` : dest.duration}
+                    </span>
+                  </div>
+
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.6rem',
+                      fontWeight: '700',
+                      color: '#FFFFFF',
+                      marginBottom: '0.5rem',
+                      lineHeight: '1.2'
+                    }}
+                  >
+                    {dest.name}
+                  </h3>
+
+                  <p style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.85)', lineHeight: '1.6', marginBottom: '1rem' }}>
+                    {dest.description || dest.shortDesc}
+                  </p>
+
+                  <div
+                    style={{
+                      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+                      paddingTop: '1rem',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      gap: '0.75rem'
+                    }}
+                  >
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.85rem' }}>
+                      <Clock size={15} />
+                      {dest.duration || '2-4 Days'}
+                    </span>
+
+                    <Link
+                      to={`/destinations/${dest.id}`}
+                      onClick={(e) => e.stopPropagation()}
+                      style={{
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '0.35rem',
-                        backdropFilter: 'blur(4px)',
-                        border: '1px solid rgba(255,255,255,0.2)'
-                      }}
-                    >
-                      <Camera size={13} style={{ color: '#E29578' }} />
-                      <span>{photoList.length} Photos</span>
-                    </div>
-                  </div>
-
-                  {/* Thumbnail Strip Preview */}
-                  {photoList.length > 1 && (
-                    <div 
-                      style={{ 
-                        display: 'flex', 
-                        gap: '4px', 
-                        padding: '6px 12px', 
-                        backgroundColor: '#F5EFE3', 
-                        borderBottom: '1px solid var(--color-border)',
-                        overflowX: 'auto'
-                      }}
-                    >
-                      {photoList.map((imgUrl, pIdx) => (
-                        <img
-                          key={pIdx}
-                          src={imgUrl}
-                          alt={`${dest.name} photo ${pIdx + 1}`}
-                          onClick={() => openGallery(dest, pIdx)}
-                          onError={(e) => {
-                            e.currentTarget.onerror = null;
-                            e.currentTarget.src = fallbackImage;
-                          }}
-                          style={{
-                            width: '44px',
-                            height: '32px',
-                            objectFit: 'cover',
-                            borderRadius: '3px',
-                            cursor: 'pointer',
-                            border: '1px solid rgba(0,0,0,0.15)',
-                            transition: 'opacity 0.2s ease, transform 0.2s ease'
-                          }}
-                          title={`View photo ${pIdx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Card Content Body */}
-                  <div style={{ padding: '1.25rem 1.25rem 0.75rem 1.25rem' }}>
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: '1.45rem',
+                        color: 'var(--color-terracotta)',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.825rem',
                         fontWeight: '700',
-                        color: 'var(--color-ink)',
-                        marginBottom: '0.25rem',
-                        lineHeight: '1.2'
+                        letterSpacing: '0.02em',
+                        textTransform: 'uppercase',
+                        textDecoration: 'none',
+                        whiteSpace: 'nowrap'
                       }}
                     >
-                      {dest.name}
-                    </h3>
-
-                    <div style={{ fontFamily: 'var(--font-handwriting)', fontStyle: 'italic', fontSize: '1.15rem', color: 'var(--color-terracotta)', marginBottom: '0.55rem' }}>
-                      "{dest.tagline || dest.subtitle}"
-                    </div>
-
-                    <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-muted)', lineHeight: '1.55', marginBottom: '0.75rem' }}>
-                      {dest.description || dest.shortDesc}
-                    </p>
+                      Enquire Cab <ArrowRight size={15} />
+                    </Link>
                   </div>
-                </div>
-
-                {/* Card Footer */}
-                <div
-                  style={{
-                    padding: '0.85rem 1.25rem',
-                    borderTop: '1px solid var(--color-border)',
-                    backgroundColor: '#F5EFE3',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}
-                >
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.725rem', color: 'var(--color-forest)', fontWeight: '700' }}>
-                    EST. FARE ₹{dest.startingPrice ? dest.startingPrice.toLocaleString() : '1,999'}
-                  </span>
-
-                  <Link
-                    to={`/destinations/${dest.id}`}
-                    style={{
-                      fontSize: '0.85rem',
-                      fontWeight: '700',
-                      color: 'var(--color-terracotta)',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.25rem'
-                    }}
-                  >
-                    Explore Destination →
-                  </Link>
                 </div>
               </div>
             );

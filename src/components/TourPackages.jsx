@@ -32,7 +32,7 @@ export default function TourPackages({ onOpenPackageModal, onOpenBookingModal })
               <PaperCard
                 paperType="cream"
                 padding="0"
-                style={{ borderRadius: '18px' }}
+                style={{ borderRadius: 'var(--radius-card-lg)' }}
               >
                 {/* Hero Package Image */}
                 <div style={{ position: 'relative', height: '210px', overflow: 'hidden' }}>
@@ -93,15 +93,12 @@ export default function TourPackages({ onOpenPackageModal, onOpenBookingModal })
                     </div>
                   )}
 
-                  {/* Footer: Divider + Price / Actions Row */}
+                  {/* Footer: Divider + Quote / Actions Row */}
                   <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '0.85rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.9rem' }}>
-                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.625rem', color: 'var(--color-ink-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                        Starting from
+                    <div style={{ marginBottom: '0.9rem' }}>
+                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.775rem', color: 'var(--color-ink-muted)' }}>
+                        Custom quote based on group size
                       </span>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: '800', color: 'var(--color-forest)' }}>
-                        ₹{pkg.startingPrice ? pkg.startingPrice.toLocaleString() : '4,999'}
-                      </div>
                     </div>
 
                     <div style={{ display: 'flex', gap: '0.5rem' }}>

@@ -22,7 +22,7 @@ export default function Testimonials() {
     { transform: 'translate(6px, 30px) rotate(2deg) scale(0.91)', opacity: 0.6, zIndex: 7, shadow: 'var(--shadow-paper)' },
   ];
 
-  const paperTypes = ['#FDFBF7', '#F5EFE3', '#EFE8D6', '#E2D5C1'];
+  const paperTypes = ['#F1F0E7', '#E3E2D8', '#D2D1C6', '#C1C0B5'];
 
   return (
     <section className="section-padding" style={{ backgroundColor: 'var(--color-paper-bg)', borderTop: '1px solid var(--color-border)', overflow: 'hidden' }}>
@@ -167,11 +167,11 @@ export default function Testimonials() {
                           style={{
                             fontFamily: 'var(--font-sans)',
                             fontSize: '0.7rem',
-                            backgroundColor: '#FFFFFF',
-                            border: '1px solid rgba(200, 90, 50, 0.35)',
+                            backgroundColor: 'var(--color-terracotta-soft)',
+                            border: '1px solid rgba(230, 184, 0, 0.4)',
                             padding: '0.35rem 0.75rem',
                             borderRadius: '6px',
-                            color: 'var(--color-terracotta)',
+                            color: 'var(--color-terracotta-hover)',
                             fontWeight: '700'
                           }}
                         >

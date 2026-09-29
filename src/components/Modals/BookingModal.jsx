@@ -95,7 +95,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
               OFFICIAL TRAVEL MANIFESTO
             </div>
             <h3 style={{ fontFamily: 'var(--font-display)', color: '#FFFFFF', fontSize: '1.35rem' }}>
-              {selectedBus ? `Book ${selectedBus}` : packageTitle ? `Enquire ${packageTitle}` : `${serviceType} Reservation Dossier`}
+              {selectedBus ? `Book ${selectedBus}` : packageTitle ? `Enquire ${packageTitle}` : `${serviceType === 'TourPackage' ? 'Tour Package' : serviceType === 'BusRental' ? 'Bus Rental' : serviceType} Reservation Dossier`}
             </h3>
           </div>
           <button onClick={onClose} style={{ color: '#FFFFFF', padding: '0.25rem', cursor: 'pointer' }}>
@@ -143,7 +143,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
                         fontFamily: 'var(--font-typewriter)',
                         border: '1px solid var(--color-border)',
                         backgroundColor: serviceType === st ? 'var(--color-terracotta)' : 'var(--color-paper-cream)',
-                        color: serviceType === st ? '#FFFFFF' : 'var(--color-ink)',
+                        color: 'var(--color-ink)',
                         cursor: 'pointer'
                       }}
                     >
@@ -154,7 +154,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
               </div>
 
               {/* Grid Fields */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.3rem' }}>FROM / PICKUP</label>
                   <input type="text" required placeholder="e.g. Bengaluru" value={from} onChange={(e) => setFrom(e.target.value)} style={{ width: '100%', padding: '0.65rem 0.75rem', border: '1.5px solid var(--color-border)', borderRadius: '4px', backgroundColor: 'var(--color-paper-cream)' }} />
@@ -166,7 +166,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontFamily: 'var(--font-typewriter)', fontSize: '0.725rem', color: 'var(--color-ink-light)', marginBottom: '0.3rem' }}>JOURNEY DATE</label>
                   <input type="date" required value={date} onChange={(e) => setDate(e.target.value)} style={{ width: '100%', padding: '0.65rem 0.75rem', border: '1.5px solid var(--color-border)', borderRadius: '4px', backgroundColor: 'var(--color-paper-cream)' }} />
@@ -187,7 +187,7 @@ export default function BookingModal({ isOpen, onClose, initialData, config }) {
               {/* Customer Contact Details */}
               <div style={{ backgroundColor: 'var(--color-paper-cream)', padding: '1rem', borderRadius: '4px', border: '1px solid var(--color-border)', marginBottom: '1.25rem' }}>
                 <div style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.75rem', color: 'var(--color-forest)', marginBottom: '0.65rem' }}>YOUR DETAILS</div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem', marginBottom: '0.75rem' }}>
                   <input type="text" required placeholder="Your Full Name" value={name} onChange={(e) => setName(e.target.value)} style={{ width: '100%', padding: '0.6rem 0.75rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
                   <input type="tel" required placeholder="Mobile Number" value={phone} onChange={(e) => setPhone(e.target.value)} style={{ width: '100%', padding: '0.6rem 0.75rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
                 </div>

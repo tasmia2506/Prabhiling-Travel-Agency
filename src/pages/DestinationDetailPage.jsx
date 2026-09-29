@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { DESTINATIONS } from '../data/destinationsData';
+import Seo from '../components/Seo';
 import PaperCard from '../components/scrapbook/PaperCard';
 import Polaroid from '../components/scrapbook/Polaroid';
 import TravelStamp from '../components/scrapbook/TravelStamp';
 import MapFragment from '../components/scrapbook/MapFragment';
+import HeroCard from '../components/HeroCard';
 import { Camera, MapPin, Clock, Calendar, Bus, X, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 export default function DestinationDetailPage({ onOpenBookingModal }) {
@@ -17,30 +19,29 @@ export default function DestinationDetailPage({ onOpenBookingModal }) {
 
   return (
     <div style={{ backgroundColor: 'var(--color-paper-bg)', paddingBottom: '5rem', minHeight: '100vh' }}>
+      <Seo
+        title={dest.name}
+        description={dest.description || `Plan your trip to ${dest.name} with Prabhuling Travel Agency — bus routes, tour packages & travel tips.`}
+        path={`/destinations/${dest.id}`}
+        image={dest.heroImage || dest.image}
+      />
       <MapFragment opacity={0.06} />
 
       {/* Header Banner with Cover Image */}
-      <section style={{ backgroundColor: '#0F1612', color: '#FFFFFF', position: 'relative', overflow: 'hidden', padding: '4rem 0 3.5rem 0' }}>
-        <img
-          src={dest.heroImage || dest.image || fallbackImage}
-          alt={dest.name}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: 0.35,
-            filter: 'contrast(1.1) brightness(0.9)'
-          }}
-          onError={(e) => {
-            e.currentTarget.onerror = null;
-            e.currentTarget.src = fallbackImage;
-          }}
-        />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,22,18,0.7) 0%, rgba(15,22,18,0.9) 100%)' }} />
-
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+      <HeroCard
+        image={dest.heroImage || dest.image || fallbackImage}
+        imageAlt={dest.name}
+        imageStyle={{ opacity: 0.35, filter: 'contrast(1.1) brightness(0.9)' }}
+        onImageError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.src = fallbackImage;
+        }}
+        overlayGradient="linear-gradient(180deg, rgba(15,22,18,0.7) 0%, rgba(15,22,18,0.9) 100%)"
+        minHeight="420px"
+        pullUnderHeader={false}
+        rounded={0}
+      >
+        <div style={{ padding: '1rem 0' }}>
           <Link to="/destinations" style={{ color: '#E29578', fontWeight: '700', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '1.25rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
             ← Back to All Destinations
           </Link>
@@ -86,7 +87,7 @@ export default function DestinationDetailPage({ onOpenBookingModal }) {
             <TravelStamp text="VISITED" subtext={dest.category || 'SOUTH INDIA'} size="medium" color="#E29578" rotation="6deg" />
           </div>
         </div>
-      </section>
+      </HeroCard>
 
       {/* Main Details & Photo Gallery */}
       <div className="container" style={{ marginTop: '3rem' }}>

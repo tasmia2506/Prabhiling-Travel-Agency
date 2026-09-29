@@ -89,7 +89,7 @@ export default function PackageDetailModal({ packageData, isOpen, onClose, onEnq
           )}
 
           {/* Action Footer */}
-          <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
             <div>
               <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.65rem', color: 'var(--color-ink-light)', display: 'block' }}>STARTING PRICE</span>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: '800', color: 'var(--color-forest)' }}>

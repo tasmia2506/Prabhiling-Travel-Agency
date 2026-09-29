@@ -1,16 +1,17 @@
 // Business Configuration & Contact Info
 // Evaluation Mode: Easily update contact info or toggle settings
 export const DEFAULT_CONFIG = {
-  businessName: "Prabhuling Travel Agency",
+  businessName: "Prabhuling Travel Agency & Online Services",
   whatsappNumber: "+918050172818", // Official client WhatsApp number
   phoneNumber: "+91 80501 72818",
   altPhoneNumber: "+91 80501 72818",
   email: "bookings@prabhulingtravels.com",
-  address: "Main Station Road, Near Central Bus Stand, Bengaluru, Karnataka 560001",
-  busCount: 7,
+  address: "Terdal–Shegunasi Road, near Nivaragi Textile, Terdal, Bagalkot District, Karnataka – 587315",
+  location: "Terdal, Bagalkot District, Karnataka",
+  busCount: 8,
   establishedYear: 2011,
   currency: "₹",
-  workingHours: "24/7 Booking Support (6:00 AM - 10:30 PM Office Hours)"
+  workingHours: "Monday–Sunday, 10:00 AM – 7:00 PM"
 };
 
 export const SOCIAL_LINKS = {

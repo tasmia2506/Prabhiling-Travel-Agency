@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import SlowmoScrollObserver from './components/SlowmoScrollObserver';
+import SmoothScroll from './components/SmoothScroll';
 
 // Modals & Config Drawer
 import BookingModal from './components/Modals/BookingModal';
@@ -22,10 +23,12 @@ import TrainBookingPage from './pages/TrainBookingPage';
 import ToursPage from './pages/ToursPage';
 import TourDetailPage from './pages/TourDetailPage';
 import DestinationsPage from './pages/DestinationsPage';
+import ServicesPage from './pages/ServicesPage';
 import DestinationDetailPage from './pages/DestinationDetailPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GeneralBookingPage from './pages/GeneralBookingPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 // Default Business Config
 import { DEFAULT_CONFIG } from './data/config';
@@ -68,6 +71,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
+      <SmoothScroll />
       <SlowmoScrollObserver />
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-bg-main)' }}>
         {/* Navigation Header */}
@@ -131,7 +135,7 @@ export default function App() {
             />
 
             <Route
-              path="/tours"
+              path="/packages"
               element={
                 <ToursPage
                   onOpenBookingModal={handleOpenBookingModal}
@@ -140,7 +144,7 @@ export default function App() {
             />
 
             <Route
-              path="/tours/:id"
+              path="/packages/:id"
               element={
                 <TourDetailPage
                   config={config}
@@ -152,6 +156,15 @@ export default function App() {
             <Route
               path="/destinations"
               element={<DestinationsPage />}
+            />
+
+            <Route
+              path="/services"
+              element={
+                <ServicesPage
+                  onOpenBookingModal={handleOpenBookingModal}
+                />
+              }
             />
 
             <Route
@@ -186,6 +199,15 @@ export default function App() {
               path="/booking"
               element={
                 <GeneralBookingPage
+                  config={config}
+                />
+              }
+            />
+
+            <Route
+              path="/privacy-policy"
+              element={
+                <PrivacyPolicyPage
                   config={config}
                 />
               }

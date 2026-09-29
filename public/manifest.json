@@ -1,0 +1,17 @@
+{
+  "name": "Prabhuling Travel Agency",
+  "short_name": "Prabhuling",
+  "description": "Bus, Flight, Train ticket bookings, tour packages, and vehicle rentals with personalized human assistance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F2",
+  "theme_color": "#1B4D3E",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -69,7 +69,7 @@ export default function BusDetailModal({ bus, isOpen, onClose, onBookBus }) {
               </div>
             </div>
 
-            <TravelStamp text="7-BUS FLEET" size="small" color="var(--color-terracotta)" rotation="-6deg" />
+            <TravelStamp text="8-BUS FLEET" size="small" color="var(--color-gold-stamp)" rotation="-6deg" />
           </div>
 
           <div style={{ backgroundColor: 'var(--color-paper-cream)', padding: '1rem', borderRadius: '4px', border: '1px solid var(--color-border)', marginBottom: '1.25rem' }}>
@@ -85,7 +85,7 @@ export default function BusDetailModal({ bus, isOpen, onClose, onBookBus }) {
             </div>
           </div>
 
-          <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
             <div>
               <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.65rem', color: 'var(--color-ink-light)', display: 'block' }}>STARTING FARE</span>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: '800', color: 'var(--color-forest)' }}>

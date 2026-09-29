@@ -8,7 +8,8 @@ export default function Header({ config, onOpenBookingModal }) {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const isHome = location.pathname === '/';
+  const HERO_IMAGE_PAGES = ['/', '/services', '/buses', '/destinations', '/about', '/packages'];
+  const isHome = HERO_IMAGE_PAGES.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,10 +27,10 @@ export default function Header({ config, onOpenBookingModal }) {
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
-    { label: 'Tours & Destinations', path: '/tours' },
+    { label: 'Packages', path: '/packages' },
+    { label: 'Destinations', path: '/destinations' },
     { label: 'Our Buses', path: '/buses' },
-    { label: 'Train Booking', path: '/train-booking' },
-    { label: 'Flight Booking', path: '/flight-booking' },
+    { label: 'Services', path: '/services' },
     { label: 'Contact', path: '/contact' },
   ];
 
@@ -37,7 +38,6 @@ export default function Header({ config, onOpenBookingModal }) {
     ? 'rgba(18, 25, 20, 0.25)'
     : 'rgba(253, 251, 247, 0.96)';
 
-  const headerBlur = isHome && !scrolled ? 'blur(6px)' : 'blur(12px)';
   const textColor = isHome && !scrolled ? '#FFFFFF' : 'var(--color-ink)';
   const tagColor = isHome && !scrolled ? '#FDFBF7' : 'var(--color-terracotta)';
 
@@ -48,8 +48,6 @@ export default function Header({ config, onOpenBookingModal }) {
         top: 0,
         zIndex: 1000,
         backgroundColor: headerBg,
-        backdropFilter: headerBlur,
-        WebkitBackdropFilter: headerBlur,
         borderBottom: isHome && !scrolled ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid var(--color-border)',
         boxShadow: scrolled ? 'var(--shadow-paper)' : 'none',
         transition: 'all 0.35s ease'
@@ -129,7 +127,7 @@ export default function Header({ config, onOpenBookingModal }) {
 
         {/* Right Primary CTA Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Link to="/booking" style={{ textDecoration: 'none' }}>
+          <Link to="/booking" style={{ textDecoration: 'none' }} className="header-cta-btn">
             <PearlButton label="BOOK A TRIP" />
           </Link>
 
@@ -220,6 +218,9 @@ export default function Header({ config, onOpenBookingModal }) {
         @media (max-width: 1079px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: inline-flex !important; }
+        }
+        @media (max-width: 480px) {
+          .header-cta-btn { display: none !important; }
         }
       `}</style>
     </header>

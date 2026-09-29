@@ -25,7 +25,7 @@ export default function TicketStub({
         position: 'relative',
         backgroundColor: 'var(--color-paper-sheet)',
         border: '1px solid var(--color-border)',
-        borderRadius: '18px',
+        borderRadius: '20px',
         boxShadow: '0 4px 18px -2px rgba(34, 31, 29, 0.06)',
         display: 'flex',
         flexDirection: 'column',
@@ -35,21 +35,25 @@ export default function TicketStub({
         ...style
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-3px)';
-        e.currentTarget.style.boxShadow = '0 12px 28px -4px rgba(34, 31, 29, 0.12)';
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 16px 32px -6px rgba(34, 31, 29, 0.14)';
+        const img = e.currentTarget.querySelector('img');
+        if (img) img.style.transform = 'scale(1.06)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.boxShadow = '0 4px 18px -2px rgba(34, 31, 29, 0.06)';
+        const img = e.currentTarget.querySelector('img');
+        if (img) img.style.transform = 'scale(1)';
       }}
     >
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
         {/* 1. Top Bus Picture Card (Photo Placeholder Container) */}
-        <div style={{ position: 'relative', height: '185px', width: '100%', overflow: 'hidden', backgroundColor: 'var(--color-paper-cream)' }}>
+        <div style={{ position: 'relative', height: '230px', width: '100%', overflow: 'hidden', backgroundColor: 'var(--color-paper-cream)' }}>
           <img
             src={image || defaultPlaceholder}
             alt={title || "Luxury Bus Coach"}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 70%', display: 'block', transition: 'transform 0.4s ease' }}
             loading="lazy"
           />
 
@@ -74,18 +78,26 @@ export default function TicketStub({
         </div>
 
         {/* 2. Main Content Body */}
-        <div style={{ padding: '1.25rem 1.25rem 0.75rem 1.25rem' }}>
+        <div
+          style={{
+            padding: '1.25rem 1.25rem 0.75rem 1.25rem',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: (details.length === 0 && !origin && !destination) ? 'center' : 'flex-start'
+          }}
+        >
           {/* Header Title & Fleet Tag */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '1rem', minHeight: '72px' }}>
             <div>
               <h3
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '1.35rem',
+                  fontSize: '1.2rem',
                   fontWeight: '700',
                   color: 'var(--color-ink)',
-                  lineHeight: '1.25',
-                  marginBottom: '0.25rem'
+                  lineHeight: '1.3',
+                  marginBottom: '0.3rem'
                 }}
               >
                 {title}
@@ -111,9 +123,9 @@ export default function TicketStub({
                   fontFamily: 'var(--font-typewriter)',
                   fontSize: '0.625rem',
                   fontWeight: '700',
-                  color: 'var(--color-terracotta)',
-                  border: '1px solid rgba(200, 90, 50, 0.3)',
-                  backgroundColor: 'rgba(200, 90, 50, 0.05)',
+                  color: 'var(--color-gold-stamp)',
+                  border: '1px solid rgba(179, 143, 0, 0.35)',
+                  backgroundColor: 'var(--color-terracotta-soft)',
                   padding: '0.25rem 0.65rem',
                   borderRadius: '30px',
                   letterSpacing: '0.06em',
@@ -126,73 +138,6 @@ export default function TicketStub({
             )}
           </div>
 
-          {/* 3. Itinerary Route Container */}
-          {(origin || destination) && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                backgroundColor: 'var(--color-paper-cream)',
-                padding: '0.75rem 1rem',
-                borderRadius: '6px',
-                border: '1px solid rgba(195, 180, 160, 0.3)',
-                marginBottom: '1rem'
-              }}
-            >
-              <div>
-                <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.6rem', color: 'var(--color-ink-light)', display: 'block', letterSpacing: '0.08em', marginBottom: '2px' }}>
-                  FROM
-                </span>
-                <strong style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', color: 'var(--color-ink)', fontWeight: '700' }}>
-                  {origin}
-                </strong>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-terracotta)', fontSize: '0.85rem' }}>
-                <span style={{ borderBottom: '1.5px solid var(--color-terracotta)', width: '24px', opacity: 0.6 }} />
-                <span style={{ fontWeight: '700', fontSize: '0.95rem' }}>→</span>
-                <span style={{ borderBottom: '1.5px solid var(--color-terracotta)', width: '24px', opacity: 0.6 }} />
-              </div>
-
-              <div style={{ textAlign: 'right' }}>
-                <span style={{ fontFamily: 'var(--font-typewriter)', fontSize: '0.6rem', color: 'var(--color-ink-light)', display: 'block', letterSpacing: '0.08em', marginBottom: '2px' }}>
-                  TO
-                </span>
-                <strong style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', color: 'var(--color-ink)', fontWeight: '700' }}>
-                  {destination}
-                </strong>
-              </div>
-            </div>
-          )}
-
-          {/* 4. Features Inline List */}
-          {details.length > 0 && (
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                gap: '0.35rem 0.55rem',
-                fontSize: '0.825rem',
-                color: 'var(--color-ink-muted)',
-                marginBottom: '1rem'
-              }}
-            >
-              {visibleFeatures.map((item, idx) => (
-                <React.Fragment key={idx}>
-                  {idx > 0 && <span style={{ color: 'var(--color-ink-light)', opacity: 0.5 }}>·</span>}
-                  <span>✓ {item}</span>
-                </React.Fragment>
-              ))}
-
-              {remainingCount > 0 && (
-                <span style={{ fontSize: '0.775rem', color: 'var(--color-terracotta)', fontWeight: '600' }}>
-                  +{remainingCount} more
-                </span>
-              )}
-            </div>
-          )}
         </div>
       </div>
 
@@ -210,7 +155,7 @@ export default function TicketStub({
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
             {onViewDetail && (
               <button
                 onClick={onViewDetail}

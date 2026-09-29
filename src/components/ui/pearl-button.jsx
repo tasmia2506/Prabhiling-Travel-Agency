@@ -16,20 +16,20 @@ export const PearlButton = ({
     justifyContent: "center",
     height: "42px",
     padding: "0 20px",
-    backgroundColor: isHovered ? "#B34923" : "#C9572E",
-    color: "#FFFFFF",
+    backgroundColor: isHovered ? "#E6B800" : "#FFD63D",
+    color: "#2C2D27",
     fontFamily: "var(--font-sans), system-ui, sans-serif",
     fontSize: "0.8125rem",
     fontWeight: "700",
     textTransform: "uppercase",
     letterSpacing: "0.06em",
-    borderRadius: "7px",
+    borderRadius: "50px",
     border: "none",
     boxShadow: isHovered
-      ? "0 6px 18px rgba(201, 87, 46, 0.45)"
+      ? "0 6px 18px rgba(230, 184, 0, 0.5)"
       : isActive
-      ? "0 2px 6px rgba(201, 87, 46, 0.25)"
-      : "0 4px 14px rgba(201, 87, 46, 0.35)",
+      ? "0 2px 6px rgba(230, 184, 0, 0.3)"
+      : "0 4px 14px rgba(230, 184, 0, 0.4)",
     transform: isActive
       ? "translateY(1px)"
       : isHovered
